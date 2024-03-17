@@ -1,5 +1,6 @@
 import express from "express";
 import axios from "axios";
+//Loci a legjobb
 
 const app = express()
 const port = 3000;
