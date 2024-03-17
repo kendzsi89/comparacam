@@ -1,0 +1,113 @@
+
+<%- include("partials/header.ejs") %>
+
+  
+    <div id="column-canon" class="column">   
+      <div class="logo-and-like">
+        <img class="column-logo" src="/assets/images/<%= meta%>.png">
+        <form class="like-button-form" action="/l" method="GET"><button class="like-button" type="submit" name="canon">❤️</button></form>
+      </div> 
+      <div class="grid-photo one">
+        <a href="<%=link%>"><img class="photo" src="<%=photo%>"></a>
+
+          <div class="positioned-text">
+            <a href="https://api.unsplash.com/users/<%=user %>"><p class="user-text"><%= user%></p></a>
+          </div>
+          <div class="photo-meta-area">
+            
+            <p class="photo-meta"><img class="meta-logo" src="/assets/images/shutter-speed.png" alt="shutter-speed logo"><%= expo%></p>
+              <p class="photo-meta"><img class="meta-logo" src="/assets/images/aperture.png" alt="aperture logo"><%= aper%></p>
+              <p class="photo-meta"><img class="meta-logo" src="/assets/images/focal-length.png" alt="focal-length logo"><%= focal%></p>
+              <p class="photo-meta"><img class="meta-logo" src="/assets/images/iso.png" alt="iso logo"><%= iso%></p>
+
+          </div>
+        </div>
+    </div>
+    <div id="column-nikon" class="column">    
+      <div class="logo-and-like">
+        <img class="column-logo" src="/assets/images/<%= metaSecond%>.png">
+        <form class="like-button-form" action="/l" method="GET"><button class="like-button" type="submit" name="nikon">❤️</button></form>
+      </div>
+        <div class="grid-photo two">
+          <a href="<%=linkSecond%>"><img class="photo" src="<%= photoSecond%>"></a> 
+
+          <div class="positioned-text">
+            <a href="https://api.unsplash.com/users/<%=userSecond %>"><p class="user-text"><%= userSecond%></p></a>
+          </div>
+          <div class="photo-meta-area">
+          
+            <p class="photo-meta"><img class="meta-logo" src="/assets/images/shutter-speed.png" alt="shutter-speed logo"><%= expoSecond%></p>
+            <p class="photo-meta"><img class="meta-logo" src="/assets/images/aperture.png" alt="aperture logo"><%= aperSecond%></p>
+            <p class="photo-meta"><img class="meta-logo" src="/assets/images/focal-length.png" alt="focal-length logo"><%= focalSecond%></p>
+            <p class="photo-meta"><img class="meta-logo" src="/assets/images/iso.png" alt="iso logo"><%= isoSecond%></p>
+          </div>
+        </div>
+    </div>
+    <div id="column-fujifilm" class="column">  
+      <div class="logo-and-like">
+        <img class="column-logo" src="/assets/images/<%= metaThird%>.png">
+        <form class="like-button-form" action="/l" method="GET"><button class="like-button" type="submit" name="fuji">❤️</button></form>
+      </div>  
+      <div class="grid-photo three">
+        <a href="<%=linkThird%>"><img class="photo" src="<%=photoThird%>"></a>
+
+        <div class="positioned-text">
+          <a href="https://api.unsplash.com/users/<%=userThird %>"><p class="user-text"><%= userThird%></p></a>
+        </div>
+        <div class="photo-meta-area">
+          <p class="photo-meta"><img class="meta-logo" src="/assets/images/shutter-speed.png" alt="shutter-speed logo"><%= expoThird%></p>
+          <p class="photo-meta"><img class="meta-logo" src="/assets/images/aperture.png" alt="aperture logo"><%= aperThird%></p>
+          <p class="photo-meta"><img class="meta-logo" src="/assets/images/focal-length.png" alt="focal-length logo"><%= focalThird%></p>
+          <p class="photo-meta"><img class="meta-logo" src="/assets/images/iso.png" alt="iso logo"><%= isoThird%></p>
+        </div>
+      </div>
+    </div>
+    <div id="column-sony" class="column">   
+      <div class="logo-and-like">
+        <img class="column-logo" src="/assets/images/<%= metaFourth%>.png">
+        <form class="like-button-form" action="/l" method="GET"><button class="like-button" type="submit" name="sony">❤️</button></form>
+      </div>
+      <div class="grid-photo four">
+       <a href="<%=linkFourth%>"><img class="photo" src="<%=photoFourth%>"></a>
+
+        <div class="positioned-text">
+          <a href="https://api.unsplash.com/users/<%=userFourth %>"><p class="user-text"><%= userFourth%></p></a>
+        </div>
+        <div class="photo-meta-area">
+          <p class="photo-meta"><img class="meta-logo" src="/assets/images/shutter-speed.png" alt="shutter-speed logo"><%= expoFourth%></p>
+          <p class="photo-meta"><img class="meta-logo" src="/assets/images/aperture.png" alt="aperture logo"><%= aperFourth%></p>
+          <p class="photo-meta"><img class="meta-logo" src="/assets/images/focal-length.png" alt="focal-length logo"><%= focalFourth%></p>
+          <p class="photo-meta"><img class="meta-logo" src="/assets/images/iso.png" alt="iso logo"><%= isoFourth%></p>
+        </div>
+      </div>
+    </div>
+    <div id="column-other" class="column">    
+      <div class="logo-and-like">
+        <img class="column-logo" src="/assets/images/<%= metaFifth%>.png">
+        <form class="like-button-form" action="/l" method="GET"><button class="like-button" type="submit" name="other">❤️</button></form>
+      </div>
+      <div class="grid-photo five">
+        <a href="<%=linkFifth%>"><img class="photo" src="<%=photoFifth%>"></a>
+
+        <div class="positioned-text">
+          <a href="https://api.unsplash.com/users/<%=userFifth %>"><p class="user-text"><%= userFifth%></p></a>
+        </div>
+        <div class="photo-meta-area">
+          <p class="photo-meta"><img class="meta-logo" src="/assets/images/shutter-speed.png" alt="shutter-speed logo"><%= expoFifth%></p>
+          <p class="photo-meta"><img class="meta-logo" src="/assets/images/aperture.png" alt="aperture logo"><%= aperFifth%></p>
+          <p class="photo-meta"><img class="meta-logo" src="/assets/images/focal-length.png" alt="focal-length logo"><%= focalFifth%></p>
+          <p class="photo-meta"><img class="meta-logo" src="/assets/images/iso.png" alt="iso logo"><%= isoFifth%></p>
+        </div>
+      </div>
+    </div>
+    <%- include("partials/footer.ejs") %>
+    
+    <script>
+      $(".grid-photo").hover(function() {
+  $('.darkening').css({"backgroundColor": "rgba(0, 0, 0, 0.701)", "z-index": "3"});
+}, function(){
+  $('.darkening').css({"backgroundColor": "transparent", "z-index": "-1"});
+})
+    </script>
+
+</html>

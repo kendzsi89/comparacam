@@ -1,0 +1,50 @@
+<div class="footer">
+    <div class="counter-section">
+        <span id="counter-canon">
+            <img class="logo" src="/assets/images/<%= meta%>.png"><%= likes%>
+        </span>
+        <span id="counter-nikon">
+            <img class="logo" src="/assets/images/<%= metaSecond%>.png"><%= likesSecond%>
+        </span>
+        <span id="counter-fujifilm">
+            <img class="logo" src="/assets/images/<%= metaThird%>.png"><%= likesThird%>
+        </span>
+        <span id="counter-sony">
+            <img class="logo" src="/assets/images/<%= metaFourth%>.png"><%= likesFourth%>
+        </span>
+        <span id="counter-other">
+            <img class="logo" src="/assets/images/other.png"><%= likesFifth%>
+        </span>
+    </div>
+    <a href="https://www.unsplash.com">Photos provided by Unsplash</a>
+</div>
+<script>
+  const cameras = [
+    "canon",
+    "nikon",
+    "fujifilm",
+    "sony",
+    "other",
+  ]
+  $(document).ready(function() {
+  cameras.forEach((camera)=>{
+    function toggleHandle(){
+      $("#counter-" + camera).toggleClass("opacity-half")
+      $("#column-" + camera).toggleClass("hidden")
+    }
+
+    if (localStorage.getItem('switch-' + camera) && localStorage.getItem('switch-' + camera) === "true") {
+    toggleHandle(); 
+    }
+    $("#counter-" + camera).click(function() {
+      toggleHandle();
+      localStorage.setItem("switch-" + camera, $("#counter-" + camera).hasClass("opacity-half"));
+    })
+
+  })
+  })
+
+
+
+</script>
+</body>
