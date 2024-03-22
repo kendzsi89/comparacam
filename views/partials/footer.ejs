@@ -1,20 +1,12 @@
 <div class="footer">
     <div class="counter-section">
-        <span id="counter-canon">
-            <img class="logo" src="/assets/images/<%= meta%>.png"><%= likes%>
+        <% Object.values(photos).forEach(photo => { %>
+        <span id="counter-<%=photo.brand%>">
+          <img class="logo" src="/assets/images/<%= photo.brand%>.png"><%= photo.likes%>
         </span>
-        <span id="counter-nikon">
-            <img class="logo" src="/assets/images/<%= metaSecond%>.png"><%= likesSecond%>
-        </span>
-        <span id="counter-fujifilm">
-            <img class="logo" src="/assets/images/<%= metaThird%>.png"><%= likesThird%>
-        </span>
-        <span id="counter-sony">
-            <img class="logo" src="/assets/images/<%= metaFourth%>.png"><%= likesFourth%>
-        </span>
-        <span id="counter-other">
-            <img class="logo" src="/assets/images/other.png"><%= likesFifth%>
-        </span>
+
+       <% }); %>
+        
     </div>
     <a href="https://www.unsplash.com">Photos provided by Unsplash</a>
 </div>
