@@ -1,11 +1,13 @@
 
 <%- include("partials/header.ejs") %>
+<div class="column-wrapper">
 <% if (locals.photos) {%>
 <% Object.values(photos).forEach(photo => { %>
+
   <div id="column-<%= photo.brand%>" class="column">   
     <div class="logo-and-like">
       <img class="column-logo" src="/assets/images/<%= photo.brand%>.png">
-      <form class="like-button-form" action="/l" method="GET"><button class="like-button" type="submit" name="<%= photo.brand%>">❤️</button></form>
+      <form class="like-button-form" action="/l" method="GET"><button id="like-button-<%= photo.brand%>" class="like-button" type="submit" name="<%= photo.brand%>">❤️</button></form>
     </div> 
     <div class="grid-photo">
       <a href="<%= photo.link%>"><img class="photo" src="<%=photo.url%>"></a>
@@ -23,8 +25,10 @@
         </div>
       </div>
   </div>
-  
+
   <% }) %>
+
+</div>
   <% } else { %>
     <p>This page is pretty empty</p>
     <% } %>

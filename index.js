@@ -24,6 +24,7 @@ const brands = {
 }
 
 var photosByBrand = {};
+var savedSearchQuery = ""
 
 async function getPhotosByBrand(slug){
 while (Object.keys(photosByBrand).length < Object.keys(brands).length){ 
@@ -41,7 +42,7 @@ while (Object.keys(photosByBrand).length < Object.keys(brands).length){
           focal: result.exif.focal_length,
           iso: result.exif.iso,
           link: result.links.html,
-          likes: 0};
+          };
 
         }}
     )
@@ -52,29 +53,29 @@ while (Object.keys(photosByBrand).length < Object.keys(brands).length){
 
 
 
-var savedSearchQuery = ""
-var likesArray = []
-var canonLikes = 0
-var nikonLikes = 0
-var fujiLikes = 0
-var sonyLikes = 0
 
-var otherLikes = 0
 
 app.get("/", async (req, res) => {
+
     try {
       await getPhotosByBrand("photos/random/?orientation=landscape&count=30");
       var pictures = []
       Object.keys(photosByBrand).forEach((x)=>{
       pictures.push(photosByBrand[x])
       })
-        res.render("index.ejs", { photos: pictures });
+      pictures.sort(function(a, b) {
+        return a.brand.localeCompare(b.brand);
+     });
+        res.render("index.ejs", { photos: pictures.sort() });
       } catch (error){
         res.render("index.ejs", { photos: "error data" });
       }
+      photosByBrand = {}
+      pictures = []
   });
 
   app.get("/f", async (req, res) => {
+
     try{
       await getPhotosByBrand(`photos/random/?orientation=landscape&query=${req.query.search}&count=30`)
       savedSearchQuery = req.query.search
@@ -82,41 +83,44 @@ app.get("/", async (req, res) => {
       Object.keys(photosByBrand).forEach((x)=>{
       pictures.push(photosByBrand[x])
     })
-      res.render("index.ejs", { photos: pictures });
+    
+    pictures.sort(function(a, b) {
+      return a.brand.localeCompare(b.brand);
+   });
+    console.log(pictures);
+      res.render("index.ejs", { photos: pictures.sort() });
     } catch (error){
       res.render("index.ejs", {photos: "error data" });
     }
+    photosByBrand = {}
+    pictures = []
   });
 
   app.get("/l", async (req, res) => {
-    
-    likesArray.push(req._parsedUrl.query)
-
-    canonLikes = likesArray.filter(x => x === "canon=").length;
-    nikonLikes = likesArray.filter(x => x === "nikon=").length;
-    fujiLikes = likesArray.filter(x => x === "fuji=").length;
-    sonyLikes = likesArray.filter(x => x === "sony=").length;
-    otherLikes = likesArray.filter(x => x === "other=").length;
 
     try { 
-      
+      console.log(savedSearchQuery)
       await getPhotosByBrand(`photos/random/?orientation=landscape&query=${savedSearchQuery}&count=30`)
       var pictures = []
       Object.keys(photosByBrand).forEach((x)=>{
       pictures.push(photosByBrand[x])
       })
-      res.render("index.ejs", {photos: pictures });
+      pictures.sort(function(a, b) {
+        return a.brand.localeCompare(b.brand);
+     });
+      res.render("index.ejs", {photos: pictures.sort() });
 
     } catch (error){
       res.render("index.ejs", {photos: "error data" });
     }
+    photosByBrand = {}
+    pictures = []
   });
 
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
   
-  //Make like counter
 
   //sort pictures fixed positions on page
 

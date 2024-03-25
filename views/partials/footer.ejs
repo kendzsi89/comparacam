@@ -2,7 +2,7 @@
     <div class="counter-section">
         <% Object.values(photos).forEach(photo => { %>
         <span id="counter-<%=photo.brand%>">
-          <img class="logo" src="/assets/images/<%= photo.brand%>.png"><%= photo.likes%>
+          <img class="logo" src="/assets/images/<%= photo.brand%>.png"><p class="likes-of-<%= photo.brand%>"></p>
         </span>
 
        <% }); %>
@@ -11,18 +11,21 @@
     <a href="https://www.unsplash.com">Photos provided by Unsplash</a>
 </div>
 <script>
-  const cameras = [
+  let cameras = [
     "canon",
     "nikon",
     "fujifilm",
     "sony",
     "other",
   ]
+
+  
   $(document).ready(function() {
   cameras.forEach((camera)=>{
     function toggleHandle(){
       $("#counter-" + camera).toggleClass("opacity-half")
       $("#column-" + camera).toggleClass("hidden")
+    
     }
 
     if (localStorage.getItem('switch-' + camera) && localStorage.getItem('switch-' + camera) === "true") {
@@ -32,7 +35,15 @@
       toggleHandle();
       localStorage.setItem("switch-" + camera, $("#counter-" + camera).hasClass("opacity-half"));
     })
+    
 
+      $("#like-button-" + camera).click(function() {
+      counter = localStorage.getItem(camera)
+      counter++
+      localStorage.setItem(camera, counter)
+    
+    })
+    $(".likes-of-" + camera).text(localStorage.getItem(camera))
   })
   })
 

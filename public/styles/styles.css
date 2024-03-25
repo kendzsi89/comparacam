@@ -7,9 +7,9 @@ body{
     height:100vh;
     width:100vw;
     margin:0;
-display:flex;
-flex-wrap: wrap;
+    display:flex;
         background-color:white;
+        overflow: scroll;
 }
 h1{
     font-size: 48px;
@@ -65,13 +65,18 @@ input.search-button{
 .title-and-search form{
     margin-right:2%;
 }
+.column-wrapper{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    justify-content: space-between;
+}
 .column{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width:20%;
-    flex-grow:1;
+    min-width:40%;
     transition:display 0.3s forwards 0.3s, opacity 0.3s;
 }
 .logo-and-like{
@@ -86,7 +91,7 @@ input.search-button{
 .grid-photo{
     position:relative;
     box-shadow: rgba(255, 255, 255, 0.16) 0px 10px 36px 0px, rgba(255, 255, 255, 0.06) 0px 0px 0px 1px;
-    height:30%;
+    height:50%;
     aspect-ratio: 4 / 3;
     width:auto;
     transition:transform 0.5s ease;
@@ -110,27 +115,15 @@ img.photo{
 .grid-photo:hover > .positioned-text {
     opacity:0;
 }
-.grid-photo.one a:hover > img.photo{
-    transform:translate(100%,0) scale(2.8);
-}
-.grid-photo.two a:hover > img.photo{
-    transform:translate(20%,0) scale(2.8);
-}
-.grid-photo.three a:hover > img.photo{
-    transform: scale(2.8);
-}
-.grid-photo.four a:hover > img.photo{
-    transform:translate(-20%,0) scale(2.8);
-}
-.grid-photo.five a:hover > img.photo{
-    transform:translate(-100%,0) scale(2.8);
-}
 
 .darkening{
     z-index:-1;
-    width: 100%;
+    min-width:300%;
+    width: auto;
     height: 100%;
-    position:absolute;
+    position: absolute;
+    display:flex;
+    flex-grow: 1;
     top:0; left:0;
     background-color: transparent;
     transition:background-color 0.5s ease;
